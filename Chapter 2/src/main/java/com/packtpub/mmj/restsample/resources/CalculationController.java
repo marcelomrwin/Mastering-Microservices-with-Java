@@ -9,10 +9,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author sousharm
- */
 @RestController
 @RequestMapping("/calculation")
 public class CalculationController {

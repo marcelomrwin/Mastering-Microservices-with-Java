@@ -1,54 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.packtpub.mmj</groupId>
-    <artifactId>4801_chapter4</artifactId>
-    <version>PACKT-SNAPSHOT</version>
+	<groupId>com.packtpub.mmj</groupId>
+	<artifactId>4801_chapter4</artifactId>
+	<version>PACKT-SNAPSHOT</version>
 
-    <packaging>pom</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+	<packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring.boot.version>1.5.13.RELEASE</spring.boot.version>
+	</properties>
 
-    <parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Angel.SR4</version>
-    </parent>
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Camden.SR7</version>
+	</parent>
 
-    <modules>
-        <module>eureka-service</module>
-        <module>restaurant-service</module>
-        <module>booking-service</module>
-        <module>user-service</module>
-    </modules>
+	<modules>
+		<module>eureka-service</module>
+		<module>restaurant-service</module>
+		<module>booking-service</module>
+		<module>user-service</module>
+	</modules>
 
-    <!-- Build step is required to include the spring boot artifacts in generated jars -->
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.13.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <!-- Added repository additionally as Angel.SR4 was not available in central repository -->
-    <repositories>
-        <repository>
-            <id>spring-libs-release</id>
-            <url>http://repo.spring.io/libs-release-local</url>
-        </repository>
-    </repositories>
+	<!-- Build step is required to include the spring boot artifacts in generated 
+		jars -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
+			</plugin>
+		</plugins>
+	</build>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-libs-release</id>
-            <url>http://repo.spring.io/libs-release-local</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <name>4801_chapter4</name>
-    <description>Master Microservices with Java, Chapter 4 - Implementing Microservices</description>
+	<!-- Added repository additionally as Angel.SR4 was not available in central 
+		repository -->
+	<repositories>
+		<repository>
+			<id>spring-libs-release</id>
+			<url>http://repo.spring.io/libs-release-local</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-libs-release</id>
+			<url>http://repo.spring.io/libs-release-local</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<name>4801_chapter4</name>
+	<description>Master Microservices with Java, Chapter 4 - Implementing Microservices</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<version>${spring.boot.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test-autoconfigure</artifactId>
+			<version>${spring.boot.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
 </project>

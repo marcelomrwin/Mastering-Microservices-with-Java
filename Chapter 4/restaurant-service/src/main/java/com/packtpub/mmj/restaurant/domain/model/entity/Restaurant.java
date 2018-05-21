@@ -35,7 +35,7 @@ public class Restaurant extends BaseEntity<String> {
      * @param address
      * @param tables
      */
-    public Restaurant(String name, String id, String Address, List<Table> tables) {
+    public Restaurant(String name, String id, String address, List<Table> tables) {
         super(id, name);
         this.address = address;
         this.tables = tables;

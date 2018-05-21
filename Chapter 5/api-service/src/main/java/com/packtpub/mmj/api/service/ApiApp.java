@@ -2,6 +2,7 @@ package com.packtpub.mmj.api.service;
 
 import com.netflix.hystrix.strategy.HystrixPlugins;
 import com.packtpub.mmj.common.MDCHystrixConcurrencyStrategy;
+
 import javax.net.ssl.HttpsURLConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
